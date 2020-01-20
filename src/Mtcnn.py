@@ -5,10 +5,11 @@ import cv2
 from imutils import paths  
 import numpy as np
 import os, errno
+detector = MTCNN()
 def extract_face(filename, required_size=(160, 160)):
 	img=cv2.imread(filename)
 	pixels = np.array(img)
-	detector = MTCNN()
+	
 	results = detector.detect_faces(pixels)
 	try:
         	x1, y1, width, height = results[0]['box']
